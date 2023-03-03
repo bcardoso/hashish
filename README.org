@@ -1,0 +1,8 @@
+#+AUTHOR: Bruno Cardoso <cardoso.bc@gmail.com>
+#+DATE: 2023-03-03
+#+STARTUP: indent content
+
+* hashish
+
+I like hashing strings. =hashish= provides wrappers for [[https://github.com/Cyan4973/xxHash][xxHash]], [[https://www.blake2.net][BLAKE2]], and [[https://github.com/BLAKE3-team/BLAKE3][BLAKE3]]. Might expand to other use cases in the future. For a more robust hashing experience, see the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html][GNU Emacs Lisp Reference Manual]] on [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Checksum_002fHash.html][Checksum/Hash]].
+
