@@ -51,17 +51,17 @@ Optional argument HASHTYPE means 0=XXH32, 1=XXH64, 2=XXH128, 3=XXH3."
 ;;;###autoload
 (defun hashish-xxh32sum (string)
   "Return the xxh32sum of STRING."
-  (xxhsum string 0))
+  (hashish-xxhsum string 0))
 
 ;;;###autoload
 (defun hashish-xxh64sum (string)
   "Return the xxh64sum of STRING."
-  (xxhsum string 1))
+  (hashish-xxhsum string 1))
 
 ;;;###autoload
 (defun hashish-xxh128sum (string)
   "Return the xxh128sum of STRING."
-  (xxhsum string 2))
+  (hashish-xxhsum string 2))
 
 
 ;;;; BLAKE2
