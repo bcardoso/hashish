@@ -41,7 +41,7 @@
 Optional argument HASHTYPE means 0=XXH32, 1=XXH64, 2=XXH128, 3=XXH3."
   (let* ((xxh (cond ((not hashtype) 1)
                     ((or (> hashtype 3) (< hashtype 0))
-                     (user-error "ERROR.  Wrong XXH type: %s" hashtype))
+                     (user-error "Wrong XXH type: %s" hashtype))
                     (t hashtype)))
          (cmd (format "printf \"%s\" | xxhsum -H%s --tag" string xxh))
          (cut "cut -d\"=\" -f2 | tr -d \" \n\""))
@@ -70,7 +70,7 @@ blake2 algorithm and must be a multiple of 8."
   (let* ((len (cond ((not length) 512)
                     ((and (or (< length 8) (> length 64))
                           (not (eq (% length 8) 0)))
-                     (user-error "ERROR.  Length must be a multiple of 8 between 8 and 64: %s" length))
+                     (user-error "Length must be a multiple of 8, from 8 to 512: %s" length))
                     (t length)))
          (cmd (format "printf \"%s\" | b2sum -l %s --tag" string len))
          (cut "cut -d\"=\" -f2 | tr -d \" \n\""))
@@ -83,7 +83,7 @@ blake2 algorithm and must be a multiple of 8."
   "Return the b2sum of STRING.  Default LENGTH 32 bytes."
   (let* ((len (cond ((not length) 32)
                     ((< length 1)
-                     (user-error "ERROR.  Length must be a number of bytes"))
+                     (user-error "Length must be a number of bytes"))
                     (t length)))
          (cmd (format "printf \"%s\" | b3sum -l %s --no-names" string len))
          (cut "tr -d \" \n\""))
