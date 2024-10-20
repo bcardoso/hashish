@@ -35,6 +35,7 @@
 
 ;;;; XXH
 
+;;;###autoload
 (defun hashish-xxhsum (string &optional hashtype)
   "Return the xxhsum of STRING.  Default algorithm is XXH64.
 
@@ -47,14 +48,17 @@ Optional argument HASHTYPE means 0=XXH32, 1=XXH64, 2=XXH128, 3=XXH3."
          (cut "cut -d\"=\" -f2 | tr -d \" \n\""))
     (shell-command-to-string (concat cmd "|" cut))))
 
+;;;###autoload
 (defun hashish-xxh32sum (string)
   "Return the xxh32sum of STRING."
   (hashish-xxhsum string 0))
 
+;;;###autoload
 (defun hashish-xxh64sum (string)
   "Return the xxh64sum of STRING."
   (hashish-xxhsum string 1))
 
+;;;###autoload
 (defun hashish-xxh128sum (string)
   "Return the xxh128sum of STRING."
   (hashish-xxhsum string 2))
@@ -62,6 +66,7 @@ Optional argument HASHTYPE means 0=XXH32, 1=XXH64, 2=XXH128, 3=XXH3."
 
 ;;;; BLAKE2
 
+;;;###autoload
 (defun hashish-b2sum (string &optional length)
   "Return the b2sum of STRING.  Default LENGTH is 512 bits.
 
@@ -79,6 +84,7 @@ blake2 algorithm and must be a multiple of 8."
 
 ;;;; BLAKE3
 
+;;;###autoload
 (defun hashish-b3sum (string &optional length)
   "Return the b2sum of STRING.  Default LENGTH 32 bytes."
   (let* ((len (cond ((not length) 32)
@@ -89,6 +95,8 @@ blake2 algorithm and must be a multiple of 8."
          (cut "tr -d \" \n\""))
     (shell-command-to-string (concat cmd "|" cut))))
 
+
+;;; Provide
 
 (provide 'hashish)
 
